@@ -15,10 +15,17 @@ void main() {
   final people = int.parse(NumOfPeople);
   final tip = double.parse(tipPercentage);
 
-  var tipAmount = bill * tip / 100;
-  var totalBill = tipAmount + bill;
+  tipAmount(double bill, double tip) {
+    return (bill * tip / 100);
+  }
+
+  var tipamount = tipAmount(bill, tip);
+
+  print("tip amount: $tipamount");
+
+  var totalBill = tipamount + bill;
   var splitBill = totalBill / people;
-  print("tip amount: $tipAmount");
+  //   print("tip amount: $tipAmount");
   print("total bill: $totalBill");
   print("Each person pays: $splitBill");
 }
