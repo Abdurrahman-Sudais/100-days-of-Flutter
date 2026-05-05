@@ -1,7 +1,7 @@
 void main() {
   Device device1 = Device("iphone");
   device1.powerOn();
-  SmartTv myTV = SmartTv("samsumg", 15);
+  SmartTV myTV = SmartTV("samsumg", 15);
   myTV.powerOn();
   myTV.connectToWifi();
   myTV.increaseVolume();
@@ -30,10 +30,10 @@ class Connectable {
   }
 }
 
-class SmartTv extends Device with VolumeControl implements Connectable {
+class SmartTV extends Device with VolumeControl implements Connectable {
   int screenSize;
 
-  SmartTv(String name, this.screenSize) : super(name);
+  SmartTV(String name, this.screenSize) : super(name);
   void connectToWifi() {
     print("$name connected to wifi!");
   }

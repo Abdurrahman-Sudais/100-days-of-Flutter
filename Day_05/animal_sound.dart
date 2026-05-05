@@ -23,7 +23,6 @@ class Dog extends Animal {
   Dog(String name, int age, this.breed) : super(name, age);
   @override
   void AnimalSound() {
-    // TODO: implement AnimalSound
     print("$name barks");
   }
 }
@@ -33,7 +32,6 @@ class Cat extends Animal {
   Cat(String name, int age, this.breed) : super(name, age);
   @override
   void AnimalSound() {
-    // TODO: implement AnimalSound
     print("$name meows");
   }
 }
