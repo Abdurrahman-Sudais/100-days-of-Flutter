@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,10 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
         leading: Icon(Icons.account_circle_outlined),
         actions: [
-          Padding(padding: const EdgeInsets.all(8.0), child: Icon(Icons.menu)),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(onPressed: () {}, icon: Icon(Icons.light_mode)),
+          ),
         ],
       ),
       body: Center(
