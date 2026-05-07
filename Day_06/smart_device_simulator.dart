@@ -9,17 +9,14 @@ void main() {
 
 class Device {
   String? name;
-  bool? _isPoweredOn;
 
   Device(this.name);
 
   void powerOn() {
-    _isPoweredOn = true;
     print("$name is powered on!");
   }
 
   void powerOff() {
-    _isPoweredOn = false;
     print("$name is powered off!");
   }
 }
