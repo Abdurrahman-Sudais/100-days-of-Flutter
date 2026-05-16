@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_social_media_app/notifications.dart';
+import 'package:mini_social_media_app/notifiers.dart';
 import 'package:mini_social_media_app/post.dart';
 import 'package:mini_social_media_app/profile_page.dart';
 import 'package:mini_social_media_app/home_page.dart';
@@ -18,14 +19,21 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Social Media App",
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: HomePage(),
+    return ValueListenableBuilder(
+      valueListenable: isDarkMode,
+      builder: (context, isDark, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "Social Media App",
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.white,
+              brightness: isDark ? Brightness.dark : Brightness.light,
+            ),
+          ),
+          home: HomePage(),
+        );
+      },
     );
   }
 }

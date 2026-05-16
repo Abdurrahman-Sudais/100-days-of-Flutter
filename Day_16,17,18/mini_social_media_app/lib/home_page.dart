@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_social_media_app/notifiers.dart';
 import 'package:mini_social_media_app/post.dart';
 import 'package:mini_social_media_app/profile_page.dart';
 
@@ -10,6 +11,7 @@ class HomePage1 extends StatefulWidget {
 }
 
 class _HomePage1State extends State<HomePage1> {
+  int like = 2;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -19,6 +21,7 @@ class _HomePage1State extends State<HomePage1> {
           SizedBox(
             height: 100,
             child: SingleChildScrollView(
+              physics: ScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Padding(
                 padding: const EdgeInsets.only(left: 25.0),
@@ -121,7 +124,42 @@ class _HomePage1State extends State<HomePage1> {
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.favorite_border, size: 16),
+                                ValueListenableBuilder(
+                                  valueListenable: isLiked,
+                                  builder: (context, Liked, child) {
+                                    return Row(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            isLiked.value = !isLiked.value;
+                                            setState(() {
+                                              if (isLiked.value) {
+                                                like++;
+                                              } else {
+                                                like--;
+                                              }
+                                            });
+                                          },
+                                          child: Liked
+                                              ? Icon(
+                                                  Icons.favorite,
+                                                  size: 16,
+                                                  color: Colors.red,
+                                                )
+                                              : Icon(
+                                                  Icons.favorite_border,
+                                                  size: 16,
+                                                ),
+                                        ),
+                                        SizedBox(width: 2),
+                                        Text(
+                                          "$like",
+                                          style: TextStyle(fontSize: 10),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
                                 SizedBox(width: 30),
                                 Icon(Icons.comment, size: 16),
                                 SizedBox(width: 30),
@@ -169,7 +207,42 @@ class _HomePage1State extends State<HomePage1> {
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.favorite_border, size: 16),
+                                ValueListenableBuilder(
+                                  valueListenable: isLiked,
+                                  builder: (context, Liked, child) {
+                                    return Row(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            isLiked.value = !isLiked.value;
+                                            setState(() {
+                                              if (isLiked.value) {
+                                                like++;
+                                              } else {
+                                                like--;
+                                              }
+                                            });
+                                          },
+                                          child: Liked
+                                              ? Icon(
+                                                  Icons.favorite,
+                                                  size: 16,
+                                                  color: Colors.red,
+                                                )
+                                              : Icon(
+                                                  Icons.favorite_border,
+                                                  size: 16,
+                                                ),
+                                        ),
+                                        SizedBox(width: 2),
+                                        Text(
+                                          "$like",
+                                          style: TextStyle(fontSize: 10),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
                                 SizedBox(width: 30),
                                 Icon(Icons.comment, size: 16),
                                 SizedBox(width: 30),
@@ -253,7 +326,42 @@ class _HomePage1State extends State<HomePage1> {
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.favorite_border, size: 16),
+                                ValueListenableBuilder(
+                                  valueListenable: isLiked,
+                                  builder: (context, Liked, child) {
+                                    return Row(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            isLiked.value = !isLiked.value;
+                                            setState(() {
+                                              if (isLiked.value) {
+                                                like++;
+                                              } else {
+                                                like--;
+                                              }
+                                            });
+                                          },
+                                          child: Liked
+                                              ? Icon(
+                                                  Icons.favorite,
+                                                  size: 16,
+                                                  color: Colors.red,
+                                                )
+                                              : Icon(
+                                                  Icons.favorite_border,
+                                                  size: 16,
+                                                ),
+                                        ),
+                                        SizedBox(width: 2),
+                                        Text(
+                                          "$like",
+                                          style: TextStyle(fontSize: 10),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
                                 SizedBox(width: 30),
                                 Icon(Icons.comment, size: 16),
                                 SizedBox(width: 30),
