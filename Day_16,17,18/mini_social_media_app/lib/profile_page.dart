@@ -16,7 +16,9 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text("Profile"),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            
+          },
           icon: Icon(Icons.arrow_back),
         ),
         actions: [

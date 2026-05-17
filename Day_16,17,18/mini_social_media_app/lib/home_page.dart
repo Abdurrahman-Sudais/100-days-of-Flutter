@@ -11,6 +11,7 @@ class HomePage1 extends StatefulWidget {
 }
 
 class _HomePage1State extends State<HomePage1> {
+  List<Widget> post = [];
   int like = 2;
   @override
   Widget build(BuildContext context) {
