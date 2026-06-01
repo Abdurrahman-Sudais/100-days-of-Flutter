@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Body extends StatefulWidget {
@@ -41,6 +42,13 @@ class _BodyState extends State<Body> {
     loadTasks();
   }
 
+  void clearCompleted() {
+    setState(() {
+      tasks.removeWhere((tasks) => tasks[1] == true);
+    });
+    saveTasks();
+  }
+
   Future<void> saveTasks() async {
     final prefs = await SharedPreferences.getInstance();
     List<String> savedTasks = tasks
@@ -74,7 +82,7 @@ class _BodyState extends State<Body> {
         ),
         SizedBox(height: 2),
         Text(
-          "May 22, 2026.",
+          "June 1, 2026.",
           style: TextStyle(fontSize: 15, color: Colors.white24),
         ),
         SizedBox(height: 20),
@@ -130,6 +138,14 @@ class _BodyState extends State<Body> {
             ],
           ),
         ),
+        SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: () {
+            clearCompleted();
+          },
+          child: Text("clear completed tasks"),
+        ),
+        SizedBox(height: 20),
         Divider(),
         SizedBox(height: 5),
         Padding(
@@ -163,14 +179,34 @@ class _BodyState extends State<Body> {
         SizedBox(height: 5),
         Divider(),
         Expanded(
-          child: TaskView(
-            task: tasks,
-            onDelete: _deleteTask,
-            onUpdate: () {
-              setState(() {});
-              saveTasks();
-            },
-          ),
+          child: tasks.isEmpty
+              ? SingleChildScrollView(
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Lottie.asset(
+                          'assets/lottie/NO RESULTS.json',
+                          width: 200,
+                          height: 200,
+                          fit: BoxFit.contain,
+                        ),
+                        SizedBox(height: 1),
+                        Text(
+                          "No Tasks yet",
+                          style: TextStyle(color: Colors.white12),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : TaskView(
+                  task: tasks,
+                  onDelete: _deleteTask,
+                  onUpdate: () {
+                    setState(() {});
+                    saveTasks();
+                  },
+                ),
         ),
       ],
     );
