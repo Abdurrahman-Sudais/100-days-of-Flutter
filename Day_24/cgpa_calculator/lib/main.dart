@@ -373,6 +373,12 @@ class _homePageState extends State<homePage> {
                     setState(() {
                       courses.removeAt(index);
                       calculateCgpa();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("${course["course"]} Deleted!"),
+                          duration: Duration(milliseconds: 70),
+                        ),
+                      );
                     });
                   },
                   style: OutlinedButton.styleFrom(
